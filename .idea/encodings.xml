@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/location-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/location-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/location-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/location-base/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/location-services/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/location-services/src/main/resources" charset="UTF-8" />
   </component>
