@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgis/postgis:latest
+    container_name: iot_postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iot_user
+      POSTGRES_PASSWORD: iot_password
+      POSTGRES_DB: iot_tracking
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iot_user -d iot_tracking"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - iot_net
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: iot_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@iot.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+    networks:
+      - iot_net
+
+volumes:
+  postgres_data:
+
+networks:
+  iot_net:
+    driver: bridge
